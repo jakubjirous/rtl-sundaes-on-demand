@@ -1,5 +1,6 @@
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
 import SummaryForm from "../../../components/SummaryForm/SummaryForm";
 
 describe("<SummaryForm />", () => {
@@ -29,12 +30,12 @@ describe("<SummaryForm />", () => {
       name: /confirm order/i,
     });
 
-    fireEvent.click(checkboxEl);
+    userEvent.click(checkboxEl);
 
     expect(checkboxEl).toBeChecked();
     expect(confirmBtnEl).toBeEnabled();
 
-    fireEvent.click(checkboxEl);
+    userEvent.click(checkboxEl);
 
     expect(checkboxEl).not.toBeChecked();
     expect(confirmBtnEl).toBeDisabled();
