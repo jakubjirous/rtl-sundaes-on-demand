@@ -40,4 +40,35 @@ describe("<SummaryForm />", () => {
     expect(checkboxEl).not.toBeChecked();
     expect(confirmBtnEl).toBeDisabled();
   });
+
+  test("popover responds to hover", () => {
+    render(<SummaryForm />);
+
+    const nullPopoverEl = screen.queryByText(
+      /no ice cream will actually be delivered/i
+    );
+
+    const termsEl = screen.getByText(/terms and conditions/i);
+
+    // popover starts out hidden
+    expect(nullPopoverEl).not.toBeInTheDocument();
+
+    // popover appears upon mouseover of checkbox label
+    userEvent.hover(termsEl);
+
+    const popoverEl = screen.queryByText(
+      /no ice cream will actually be delivered/i
+    );
+
+    expect(popoverEl).toBeInTheDocument();
+
+    // popover disappears when mouse in out
+    userEvent.unhover(termsEl);
+
+    const nullPopoverAgainEl = screen.queryByText(
+      /no ice cream will actually be delivered/i
+    );
+
+    expect(nullPopoverAgainEl).not.toBeInTheDocument();
+  });
 });

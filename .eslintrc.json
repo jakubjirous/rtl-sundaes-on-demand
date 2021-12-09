@@ -10,6 +10,7 @@
     "node": true
   },
   "extends": [
+    "react-app",
     "prettier",
     "eslint:recommended",
     "plugin:react/recommended",
@@ -28,7 +29,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["prettier", "react", "react-hooks", "testing-library"],
+  "plugins": ["prettier", "react", "react-hooks", "testing-library", "jest"],
   "rules": {
     "prettier/prettier": "error",
     "arrow-body-style": "off",
