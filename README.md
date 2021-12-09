@@ -1,2 +1,2 @@
-# rtl-sundaes-on-demand
+# Sundaes On Demand
 React Testing Library &amp; Jest
