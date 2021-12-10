@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Form, Row } from "react-bootstrap";
+import { Col, Form } from "react-bootstrap";
 
 interface ToppingOptionProps {
   name: string;
@@ -9,7 +9,7 @@ interface ToppingOptionProps {
 
 function ToppingOption({ name, imagePath, updateItem }: ToppingOptionProps) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateItem(name, +event.target.value);
+    updateItem(name, +event.target.checked ? 1 : 0);
   };
 
   return (
@@ -19,21 +19,8 @@ function ToppingOption({ name, imagePath, updateItem }: ToppingOptionProps) {
         alt={`${name} topping`}
         style={{ width: "75%" }}
       />
-      <Form.Group
-        controlId={`${name}-count`}
-        as={Row}
-        style={{ marginTop: "10px" }}
-      >
-        <Form.Label column xs={6} style={{ textAlign: "right" }}>
-          {name}
-        </Form.Label>
-        <Col xs={5} style={{ textAlign: "left" }}>
-          <Form.Control
-            type="number"
-            defaultValue={0}
-            onChange={handleChange}
-          />
-        </Col>
+      <Form.Group controlId={`${name}-topping-checkbox`}>
+        <Form.Check type="checkbox" onChange={handleChange} label={name} />
       </Form.Group>
     </Col>
   );

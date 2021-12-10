@@ -20,7 +20,7 @@ function ScoopOption({ name, imagePath, updateItem }: ScoopOptionProps) {
         style={{ width: "75%" }}
       />
       <Form.Group
-        controlId={`${name}-count`}
+        controlId={`${name}-scoop-number`}
         as={Row}
         style={{ marginTop: "10px" }}
       >
