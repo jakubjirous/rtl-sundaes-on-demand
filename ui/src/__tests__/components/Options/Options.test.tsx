@@ -1,10 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import Options, { OptionType } from "../../../components/Options/Options";
+import Options from "../../../components/Options/Options";
+import { OrderDetailsProvider } from "../../../context/OrderDetails";
+import { OptionType } from "../../../context/type";
 
 describe("<Options />", () => {
   test("displays image for each scoop from the server", async () => {
-    render(<Options optionType={OptionType.SCOOPS} />);
+    render(<Options optionType={OptionType.SCOOPS} />, {
+      wrapper: OrderDetailsProvider,
+    });
 
     // find images - if waiting for async change in the DOM - use FIND query selector
     const imagesEl = (await screen.findAllByRole("img", {
@@ -24,7 +28,9 @@ describe("<Options />", () => {
   });
 
   test("displays image for each topping from the server", async () => {
-    render(<Options optionType={OptionType.TOPPINGS} />);
+    render(<Options optionType={OptionType.TOPPINGS} />, {
+      wrapper: OrderDetailsProvider,
+    });
 
     // find images - if waiting for async change in the DOM - use FIND query selector
     const imagesEl = (await screen.findAllByRole("img", {

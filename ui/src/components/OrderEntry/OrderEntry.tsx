@@ -1,5 +1,6 @@
 import React from "react";
-import Options, { OptionType } from "../Options/Options";
+import { OptionType } from "../../context/type";
+import Options from "../Options/Options";
 
 function OrderEntry() {
   return (

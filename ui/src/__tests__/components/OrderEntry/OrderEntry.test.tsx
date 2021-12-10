@@ -2,6 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { rest } from "msw";
 import React from "react";
 import OrderEntry from "../../../components/OrderEntry/OrderEntry";
+import { OrderDetailsProvider } from "../../../context/OrderDetails";
 import { server } from "../../../mock/server";
 
 describe("<OrderEntry />", () => {
@@ -16,7 +17,9 @@ describe("<OrderEntry />", () => {
       })
     );
 
-    render(<OrderEntry />);
+    render(<OrderEntry />, {
+      wrapper: OrderDetailsProvider,
+    });
 
     await waitFor(async () => {
       const alertsEl = await screen.findAllByRole("alert");
