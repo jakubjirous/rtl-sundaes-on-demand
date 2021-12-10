@@ -35,7 +35,7 @@ function Options({ optionType }: OptionsProps) {
   // TODO: replace `null` with ToppingOption when available (Jakub Jirous 2021-12-09 16:46:11)
   const optionItems = items.map((item, index) => {
     return optionType === OptionType.SCOOPS ? (
-      <ScoopOption key={index} item={item} />
+      <ScoopOption key={index} name={item.name} imagePath={item.imagePath} />
     ) : null;
   });
 
