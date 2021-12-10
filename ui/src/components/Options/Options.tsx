@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import { Item } from "../../mock/handlers";
 import ScoopOption from "../ScoopOption/ScoopOption";
+import ToppingOption from "../ToppingOption/ToppingOption";
 
 export enum OptionType {
   TOPPINGS = "toppings",
@@ -32,11 +33,12 @@ function Options({ optionType }: OptionsProps) {
     fetchItems();
   }, [optionType]);
 
-  // TODO: replace `null` with ToppingOption when available (Jakub Jirous 2021-12-09 16:46:11)
   const optionItems = items.map((item, index) => {
     return optionType === OptionType.SCOOPS ? (
       <ScoopOption key={index} name={item.name} imagePath={item.imagePath} />
-    ) : null;
+    ) : (
+      <ToppingOption key={index} name={item.name} imagePath={item.imagePath} />
+    );
   });
 
   return <Row>{optionItems}</Row>;

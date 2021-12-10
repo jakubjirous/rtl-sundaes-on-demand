@@ -6,6 +6,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
+      <Options optionType={OptionType.TOPPINGS} />
       <Options optionType={OptionType.SCOOPS} />
       <SummaryForm />
     </div>
