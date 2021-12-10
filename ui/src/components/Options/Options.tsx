@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import { Item } from "../../mock/handlers";
+import AlertBanner from "../AlertBanner/AlertBanner";
 import ScoopOption from "../ScoopOption/ScoopOption";
 import ToppingOption from "../ToppingOption/ToppingOption";
 
@@ -16,6 +17,7 @@ interface OptionsProps {
 
 function Options({ optionType }: OptionsProps) {
   const [items, setItems] = useState<Item[]>([]);
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchItems = () => {
@@ -25,13 +27,17 @@ function Options({ optionType }: OptionsProps) {
           setItems(response.data);
         })
         .catch((error) => {
-          // TODO: handle response error (Jakub Jirous 2021-12-09 16:40:51)
-          console.log(error);
+          console.warn(error);
+          setError(true);
         });
     };
 
     fetchItems();
   }, [optionType]);
+
+  if (error) {
+    return <AlertBanner />;
+  }
 
   const optionItems = items.map((item, index) => {
     return optionType === OptionType.SCOOPS ? (
