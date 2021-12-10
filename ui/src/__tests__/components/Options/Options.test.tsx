@@ -3,23 +3,23 @@ import React from "react";
 import Options, { OptionType } from "../../../components/Options/Options";
 
 describe("<Options />", () => {
-  test("displays image for each scoop from the server", () => {
+  test("displays image for each scoop from the server", async () => {
     render(<Options optionType={OptionType.SCOOPS} />);
 
-    // find images
-    const imagesEl = screen.getAllByRole("img", {
+    // find images - if waiting for async change in the DOM - use FIND query selector
+    const imagesEl = (await screen.findAllByRole("img", {
       name: /scoop$/i,
-    }) as HTMLImageElement[];
+    })) as HTMLImageElement[];
 
     expect(imagesEl).toHaveLength(4);
 
     // confirm alt text of images
     const altTextEl = imagesEl.map((image) => image.alt);
     expect(altTextEl).toEqual([
-      "Mint chip",
-      "Vanilla",
-      "Chocolate",
-      "Salted caramel",
+      "Mint chip scoop",
+      "Vanilla scoop",
+      "Chocolate scoop",
+      "Salted caramel scoop",
     ]);
   });
 });
