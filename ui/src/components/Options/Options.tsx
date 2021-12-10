@@ -27,7 +27,7 @@ function Options({ optionType }: OptionsProps) {
           setItems(response.data);
         })
         .catch((error) => {
-          console.warn(error);
+          console.log(error);
           setError(true);
         });
     };
