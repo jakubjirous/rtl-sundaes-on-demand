@@ -1,8 +1,8 @@
-import { render, screen } from "@testing-library/react";
 import React from "react";
 import AlertBanner, {
   AlertVariant,
 } from "../../../components/AlertBanner/AlertBanner";
+import { render, screen } from "../../../test-utils/testing-library";
 
 describe("<AlertBanner />", () => {
   test("initial renders with default variant", () => {

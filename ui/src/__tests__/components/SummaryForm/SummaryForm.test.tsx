@@ -1,11 +1,11 @@
+import userEvent from "@testing-library/user-event";
+import React from "react";
+import SummaryForm from "../../../components/SummaryForm/SummaryForm";
 import {
   render,
   screen,
   waitForElementToBeRemoved,
-} from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import React from "react";
-import SummaryForm from "../../../components/SummaryForm/SummaryForm";
+} from "../../../test-utils/testing-library";
 
 describe("<SummaryForm />", () => {
   test("initial conditions", () => {

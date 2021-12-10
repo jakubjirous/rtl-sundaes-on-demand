@@ -1,14 +1,11 @@
-import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Options from "../../components/Options/Options";
-import { OrderDetailsProvider } from "../../context/OrderDetails";
 import { OptionType } from "../../context/type";
+import { render, screen } from "../../test-utils/testing-library";
 
 describe("total updates", () => {
   test("update coop subtotal when coops change", async () => {
-    render(<Options optionType={OptionType.SCOOPS} />, {
-      wrapper: OrderDetailsProvider,
-    });
+    render(<Options optionType={OptionType.SCOOPS} />);
 
     // make sure total starts out $0.00
     const scoopSubtotal = screen.getByText("Scoops total: $", {
